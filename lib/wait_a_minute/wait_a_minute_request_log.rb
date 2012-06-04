@@ -4,6 +4,8 @@ require 'active_support/configurable'
 module WaitAMinute
   class WaitAMinuteRequestLog < ActiveRecord::Base
 
+    attr_accessible :ip, :refused
+
     def self.allow_request?(req = nil)
       return false unless req && (req.is_a?(ActionDispatch::Request) || req.is_a?(ActionController::TestRequest))
       allow = false
